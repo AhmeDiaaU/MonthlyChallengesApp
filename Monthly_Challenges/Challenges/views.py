@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render # replace render_to_string and return static file directly
 from django.http import HttpResponse , HttpResponseNotFound , HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -44,17 +44,19 @@ def challenges_by_numbers(request , month):
 
 def monthly_challenges(request , month):
     """_summary_
+    request : https://docs.djangoproject.com/en/5.1/ref/request-response/
 
     Args:
         request (_type_): request of the user
         month (_type_): name of month to return the month challenge
 
+        why didnt we add the file to Template directly ?
+        its more cleaner to add a app name because if you have multiple apps it will be a mess
     Returns:
         static template by render_to_string
     """
     try:
         challenge_month = monthly_challenges_dct[month]
-        response_data = render_to_string("Challenges/challenge.html") 
-        return HttpResponse(response_data)
+        return render(request , "Challenges/challenge.html") # render extract data frrom html file
     except:
         return HttpResponseNotFound("error in name ")  
