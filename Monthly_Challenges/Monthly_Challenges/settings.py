@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent # path to this overall project folder
 
 
 # Quick-start development settings - unsuitable for production
@@ -54,8 +54,11 @@ ROOT_URLCONF = 'Monthly_Challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            BASE_DIR/"Challenges"/"templates" # we tell django here that we have templates at Challenges at our project
+        ], # add directory which dijango should consider
+        'APP_DIRS': True # tell django that it want to look for templates at 
+        ,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

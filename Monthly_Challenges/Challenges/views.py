@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse , HttpResponseNotFound , HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 monthly_challenges_dct = {
     "january": "Eat no meat for the entire month",
     "february": "Walk for at least 30 minutes every day",
@@ -42,9 +43,18 @@ def challenges_by_numbers(request , month):
     return HttpResponseRedirect(redirect_path)
 
 def monthly_challenges(request , month):
+    """_summary_
+
+    Args:
+        request (_type_): request of the user
+        month (_type_): name of month to return the month challenge
+
+    Returns:
+        static template by render_to_string
+    """
     try:
         challenge_month = monthly_challenges_dct[month]
-        response_data = f"<h1>{challenge_month}<h1>"
+        response_data = render_to_string("Challenges/challenge.html") 
         return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("error in name ")  
