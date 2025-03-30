@@ -51,12 +51,16 @@ def monthly_challenges(request , month):
         month (_type_): name of month to return the month challenge
 
         why didnt we add the file to Template directly ?
-        its more cleaner to add a app name because if you have multiple apps it will be a mess
+        its more cleaner to add a a
+        pp name because if you have multiple apps it will be a mess
     Returns:
         static template by render_to_string
     """
     try:
         challenge_month = monthly_challenges_dct[month]
-        return render(request , "Challenges/challenge.html") # render extract data frrom html file
+        return render(request , "Challenges/challenge.html" , {
+            "text" : challenge_month,
+            "month" : month
+        }) # render extract data frrom html file
     except:
         return HttpResponseNotFound("error in name ")  
