@@ -7,6 +7,12 @@
 </head>
 <body>
     <h1>{{month|capfirst}}</h1>
-    <h2>{{text}}</h2> <!--we got the value of key text from render third argument which is a dictionary we stored key in -->
+    {%if text is not None%}
+       <h2>{{text}}</h2> <!--we got the value of key text from render third argument which is a dictionary we stored key in -->
+    {% else %}
+    <p>
+        There is no Challenge for this month yet 
+    </p>
+       {% endif %}
 </body>
 </html>
