@@ -31,12 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Challenges',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -55,9 +57,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR/"Challenges"/"templates" # we tell django here that we have templates at Challenges at our project
+           # BASE_DIR/"Challenges"/"templates"# we tell django here that we have templates at Challenges at our project
+            BASE_DIR /"templates"  
         ], # add directory which dijango should consider
-        'APP_DIRS': True # tell django that it want to look for templates at 
+        'APP_DIRS': True # tell django that it want to look for templates at app folder 
         ,
         'OPTIONS': {
             'context_processors': [

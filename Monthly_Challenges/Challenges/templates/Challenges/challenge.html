@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{month|capfirst }} Challenge</title>
-</head>
-<body>
+{% extends "base.html" %}
+{%block pagetitle%}{{month|capfirst }} Challenge {%endblock%}
+{%block content%}
+    {% include "Challenges/includes/header.html" %}
     <h1>{{month|capfirst}}</h1>
     {%if text is not None%}
        <h2>{{text}}</h2> <!--we got the value of key text from render third argument which is a dictionary we stored key in -->
@@ -14,5 +10,4 @@
         There is no Challenge for this month yet 
     </p>
        {% endif %}
-</body>
-</html>
+{%endblock%}
