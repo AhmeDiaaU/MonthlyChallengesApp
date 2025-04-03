@@ -1,5 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 {%block pagetitle%}{{month|capfirst }} Challenge {%endblock%}
+{%block cssFile%}
+<link rel="stylesheet" href="{% static 'Challenges/Challenge.css' %}">
+<link rel="stylesheet" href="{% static 'Challenges/includes/header.css' %}">
+
+{%endblock%}
 {%block content%}
     {% include "Challenges/includes/header.html" %}
     <h1>{{month|capfirst}}</h1>
