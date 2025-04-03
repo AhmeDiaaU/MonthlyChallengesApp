@@ -1,5 +1,5 @@
 from django.shortcuts import render # replace render_to_string and return static file directly
-from django.http import HttpResponse , HttpResponseNotFound , HttpResponseRedirect
+from django.http import HttpResponse , HttpResponseNotFound , HttpResponseRedirect , Http404
 from django.urls import reverse
 from django.template.loader import render_to_string
 monthly_challenges_dct = {
@@ -33,7 +33,7 @@ def challenges_by_numbers(request , month):
     """
     months = list(monthly_challenges_dct.keys())    
     if month >len(months):
-        return HttpResponse("Invalid input")
+        raise Http404()
     redirect_month = months[month-1]
     redirect_path = reverse("month-challenge" , args=[redirect_month])  # get path of that name which linked with url in proj urls , we concatinate it with ars=[month] => which is a lst with one item
     return HttpResponseRedirect(redirect_path)
@@ -59,4 +59,4 @@ def monthly_challenges(request , month):
             "month" : month
         }) # render extract data frrom html file
     except:
-        return HttpResponseNotFound("error in name ")  
+        raise Http404() #automaticlly it will look for 404 html file and raise it  
